@@ -25,6 +25,19 @@ impl Ord for Card {
         self.value.cmp(&other.value)
     }
 }
+fn make_standard_deck() -> Vec<Card> {
+    let mut result = Vec::new();
+    let suits  = &[Suit::Clubs, Suit::Diamonds, Suit::Hearts, Suit::Spades];
+    let values = &["2", "3", "4", "5", "6", "7", "8", "9", "10",
+                   "Jack", "Queen", "King", "Ace"];
+
+    for suit in suits {
+        for value in values {
+            result.push(Card::new(*suit, value));
+        }
+    }
+    return result;
+}
 
 fn main() {
 }
