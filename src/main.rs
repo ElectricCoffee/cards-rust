@@ -23,7 +23,6 @@ fn print_card(card: Card) {
 }
 
 fn main() {
-    println!("Hello, world!");
     let card = Card::new(Suit::Hearts, 'Q');
     print_card(card);
 }
