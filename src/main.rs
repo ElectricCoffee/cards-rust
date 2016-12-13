@@ -17,6 +17,13 @@ impl Card {
         Card { suit: suit, value: value }
     }
 }
+
+fn print_card(card: Card) {
+    println!("My card: {:?}", card);
+}
+
 fn main() {
     println!("Hello, world!");
+    let card = Card::new(Suit::Hearts, 'Q');
+    print_card(card);
 }
