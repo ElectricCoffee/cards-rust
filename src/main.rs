@@ -18,6 +18,12 @@ impl Card {
     }
 }
 
+impl Ord for Card {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        self.value.cmp(&other.value)
+    }
+}
+
 fn print_card(card: Card) {
     println!("My card: {:?}", card);
 }
