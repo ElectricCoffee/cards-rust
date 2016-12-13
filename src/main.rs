@@ -1,3 +1,4 @@
+use std::str;
 #[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Copy, Clone)]
 enum Suit {
     Clubs,
@@ -7,14 +8,14 @@ enum Suit {
     Stars,
 }
 
-#[derive(Debug, Eq, PartialEq, PartialOrd, Copy, Clone)]
+#[derive(Debug, Eq, PartialEq, PartialOrd)]
 struct Card {
     suit: Suit,
-    value: char,
+    value: &'static str,
 }
 
 impl Card {
-    fn new(suit: Suit, value: char) -> Card {
+    fn new(suit: Suit, value: &'static str) -> Card {
         Card { suit: suit, value: value }
     }
 }
@@ -25,11 +26,5 @@ impl Ord for Card {
     }
 }
 
-fn print_card(card: Card) {
-    println!("My card: {:?}", card);
-}
-
 fn main() {
-    let card = Card::new(Suit::Hearts, 'Q');
-    print_card(card);
 }
