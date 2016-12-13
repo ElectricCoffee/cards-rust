@@ -4,6 +4,7 @@ enum Suit {
     Diamonds,
     Hearts,
     Spades,
+    Stars,
 }
 
 #[derive(Debug, Eq, PartialEq, PartialOrd, Copy, Clone)]
