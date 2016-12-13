@@ -5,6 +5,13 @@ enum Suit {
     Hearts,
     Spades,
 }
+
+#[derive(Debug)]
+struct Card {
+    suit: Suit,
+    value: char,
+}
+
 fn main() {
     println!("Hello, world!");
 }
