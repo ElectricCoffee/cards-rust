@@ -12,6 +12,11 @@ struct Card {
     value: char,
 }
 
+impl Card {
+    fn new(suit: Suit, value: char) -> Card {
+        Card { suit: suit, value: value }
+    }
+}
 fn main() {
     println!("Hello, world!");
 }
