@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Copy, Clone)]
 enum Suit {
     Clubs,
     Diamonds,
@@ -6,7 +6,7 @@ enum Suit {
     Spades,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Eq, PartialEq, PartialOrd, Copy, Clone)]
 struct Card {
     suit: Suit,
     value: char,
