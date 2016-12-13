@@ -1,4 +1,7 @@
+extern crate rand;
 use std::str;
+use rand::Rng;
+
 #[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Copy, Clone)]
 enum Suit {
     Clubs,
@@ -51,6 +54,10 @@ fn make_fifth_dimension_deck() -> Vec<Card> {
         }
     }
     return result;
+}
+
+fn shuffle(deck: &mut Vec<Card>) {
+    rand::thread_rng().shuffle(deck);
 }
 
 fn main() {
