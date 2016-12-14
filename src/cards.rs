@@ -3,13 +3,7 @@ use ::std::str;
 use self::rand::Rng;
 
 #[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Copy, Clone)]
-pub enum Suit {
-    Clubs,
-    Diamonds,
-    Hearts,
-    Spades,
-    Stars,
-}
+pub enum Suit { Clubs, Diamonds, Hearts, Spades, Stars }
 
 #[derive(Debug, Eq, PartialEq, PartialOrd)]
 pub struct Card {
