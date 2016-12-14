@@ -6,24 +6,24 @@ use self::rand::Rng;
 pub enum Suit { Clubs, Diamonds, Hearts, Spades, Stars }
 
 #[derive(Debug, Eq, PartialEq, PartialOrd)]
-pub struct Card {
+pub struct Card<'a> {
     suit: Suit,
-    value: &'static str,
+    value: &'a str,
 }
 
-impl Card {
-    pub fn new(suit: Suit, value: &'static str) -> Card {
+impl<'a> Card<'a> {
+    pub fn new(suit: Suit, value: &'a str) -> Card {
         Card { suit: suit, value: value }
     }
 }
 
-impl Ord for Card {
+impl<'a> Ord for Card<'a> {
     fn cmp(&self, other: &Self) -> ::std::cmp::Ordering {
         self.value.cmp(&other.value)
     }
 }
 
-pub fn make_standard_deck() -> Vec<Card> {
+pub fn make_standard_deck<'a>() -> Vec<Card<'a>> {
     let mut result = Vec::new();
     let suits  = &[Suit::Clubs, Suit::Diamonds, Suit::Hearts, Suit::Spades];
     let values = &["2", "3", "4", "5", "6", "7", "8", "9", "10",
@@ -37,7 +37,7 @@ pub fn make_standard_deck() -> Vec<Card> {
     return result;
 }
 
-pub fn make_fifth_dimension_deck() -> Vec<Card> {
+pub fn make_fifth_dimension_deck<'a>() -> Vec<Card<'a>> {
     let mut result = Vec::new();
     let suits  = &[Suit::Clubs, Suit::Diamonds, Suit::Hearts, Suit::Spades, Suit::Stars];
     let values = &["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",

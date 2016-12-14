@@ -1,4 +1,4 @@
-mod cards;
+pub mod cards;
 
 fn main() {
 }
