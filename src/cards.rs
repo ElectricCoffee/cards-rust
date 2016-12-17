@@ -38,7 +38,7 @@ pub fn make_standard_deck() -> Vec<Card> {
     return result;
 }
 
-pub fn make_fifth_dimension_deck<'a>() -> Vec<Card> {
+pub fn make_fifth_dimension_deck() -> Vec<Card> {
     let mut result = Vec::new();
     let suits  = &["♣", "♦", "♥", "♠", "★"];
     let values = &["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
