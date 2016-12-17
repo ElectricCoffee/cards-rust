@@ -1,6 +1,6 @@
 extern crate rand;
-use ::std::str;
-use self::rand::Rng;
+use std::str;
+use rand::Rng;
 
 #[derive(Debug, Eq, PartialEq, PartialOrd)]
 pub struct Card {
