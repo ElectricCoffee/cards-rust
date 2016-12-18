@@ -9,6 +9,11 @@ pub struct Card {
     value: String,
 }
 
+#[derive(Debug, Eq, PartialEq, PartialOrd)]
+pub struct Deck {
+    cards: Vec<Card>
+}
+
 impl Card {
     pub fn new(suit: String, value: String) -> Card {
         Card { suit: suit, value: value.to_string() }
@@ -31,34 +36,46 @@ impl fmt::Display for Card {
     }
 }
 
-pub fn make_standard_deck() -> Vec<Card> {
-    let mut result = Vec::new();
-    let suits  = &["♣", "♦", "♥", "♠"];
-    let values = &["2", "3", "4", "5", "6", "7", "8", "9", "10",
-                   "Jack", "Queen", "King", "Ace"];
-
-    for suit in suits {
-        for value in values {
-            result.push(Card::new_from_str(*suit, value));
-        }
+impl Deck {
+    pub fn new_from_vec(input: Vec<Card>) -> Deck {
+        Deck { cards: input }
     }
-    return result;
+
+    pub fn make_standard() -> Deck {
+        let mut result = Vec::new();
+        let suits  = &["♣", "♦", "♥", "♠"];
+        let values = &["2", "3", "4", "5", "6", "7", "8", "9", "10",
+                       "Jack", "Queen", "King", "Ace"];
+
+        for suit in suits {
+            for value in values {
+                result.push(Card::new_from_str(*suit, value));
+            }
+        }
+        return Deck::new_from_vec(result);
+    }
+
+    pub fn make_fifth_dimension() -> Deck {
+        let mut result = Vec::new();
+        let suits  = &["♣", "♦", "♥", "♠", "★"];
+        let values = &["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+                       "Jack", "Princess", "Queen", "King", "Joker"];
+
+        for suit in suits {
+            for value in values {
+                result.push(Card::new_from_str(*suit, value));
+            }
+        }
+        return Deck::new_from_vec(result);
+    }
+
+    pub fn shuffle(&mut self) {
+        rand::thread_rng().shuffle(&mut self.cards);
+    }
 }
 
-pub fn make_fifth_dimension_deck() -> Vec<Card> {
-    let mut result = Vec::new();
-    let suits  = &["♣", "♦", "♥", "♠", "★"];
-    let values = &["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-                   "Jack", "Princess", "Queen", "King", "Joker"];
-
-    for suit in suits {
-        for value in values {
-            result.push(Card::new_from_str(*suit, value));
-        }
+impl Ord for Deck {
+    fn cmp(&self, other: &Self) -> ::std::cmp::Ordering {
+        self.cards.cmp(&other.cards)
     }
-    return result;
-}
-
-pub fn shuffle(deck: &mut Vec<Card>) {
-    rand::thread_rng().shuffle(deck);
 }
