@@ -72,6 +72,10 @@ impl Deck {
     pub fn shuffle(&mut self) {
         rand::thread_rng().shuffle(&mut self.cards);
     }
+
+    pub fn len(&self) {
+        self.cards.len();
+    }
 }
 
 impl Ord for Deck {
