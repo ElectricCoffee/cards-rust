@@ -69,8 +69,16 @@ impl Deck {
         return Deck::new_from_vec(result);
     }
 
+    // destructively shuffles the internal vector
     pub fn shuffle(&mut self) {
         rand::thread_rng().shuffle(&mut self.cards);
+    }
+
+    // returns a new shuffled deck
+    pub fn shuffled(&self) -> Self {
+        let mut res = self.clone();
+        res.shuffle();
+        res
     }
 
     pub fn len(&self) {
