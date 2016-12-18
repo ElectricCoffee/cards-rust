@@ -1,5 +1,6 @@
 extern crate rand;
 use std::str;
+use std::fmt;
 use rand::Rng;
 
 #[derive(Debug, Eq, PartialEq, PartialOrd)]
@@ -21,6 +22,12 @@ impl Card {
 impl Ord for Card {
     fn cmp(&self, other: &Self) -> ::std::cmp::Ordering {
         self.value.cmp(&other.value)
+    }
+}
+
+impl fmt::Display for Card {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "Suit: {}, Value: {}", self.suit, self.value)
     }
 }
 
