@@ -6,8 +6,9 @@ use rand::Rng;
 
 #[derive(Debug, Eq, PartialEq, PartialOrd, Clone)]
 pub struct Card {
+    pub name:  String,
     pub suit:  String,
-    pub value: String,
+    pub value: i64,
 }
 
 #[derive(Debug, Eq, PartialEq, PartialOrd, Clone)]
@@ -16,12 +17,12 @@ pub struct Deck {
 }
 
 impl Card {
-    pub fn new(suit: String, value: String) -> Card {
-        Card { suit: suit, value: value.to_string() }
+    pub fn new(suit: String, name: String, value: i64) -> Card {
+        Card { suit: suit, name: name, value: value }
     }
 
-    pub fn new_from_str(suit: &str, value: &str) -> Card {
-        Card::new(suit.to_string(), value.to_string())
+    pub fn new_from_str(suit: &str, name: &str, value: i64) -> Card {
+        Card::new(suit.to_string(), name.to_string(), value)
     }
 }
 
@@ -33,7 +34,7 @@ impl Ord for Card {
 
 impl fmt::Display for Card {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Suit: {}, Value: {}", self.suit, self.value)
+        write!(f, "Suit: {}, Name: {}", self.suit, self.name)
     }
 }
 
@@ -45,12 +46,16 @@ impl Deck {
     pub fn make_standard() -> Deck {
         let mut result = VecDeque::new();
         let suits  = &["♣", "♦", "♥", "♠"];
-        let values = &["2", "3", "4", "5", "6", "7", "8", "9", "10",
-                       "Jack", "Queen", "King", "Ace"];
+        let values = &[
+            (2, "2"),     (3, "3"),      (4, "4"),
+            (5, "5"),     (6, "6"),      (7, "7"),
+            (8, "8"),     (9, "9"),      (10, "10"),
+            (11, "Jack"), (12, "Queen"), (13, "King"), (14, "Ace")
+        ];
 
         for suit in suits {
-            for value in values {
-                result.push_back(Card::new_from_str(*suit, value));
+            for &(value, name) in values {
+                result.push_back(Card::new_from_str(*suit, name, value));
             }
         }
         return Deck::from_vec_deque(result);
@@ -59,12 +64,16 @@ impl Deck {
     pub fn make_fifth_dimension() -> Deck {
         let mut result = VecDeque::new();
         let suits  = &["♣", "♦", "♥", "♠", "★"];
-        let values = &["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-                       "Jack", "Princess", "Queen", "King", "Joker"];
+        let values = &[
+            (1, "1"),      (2, "2"),     (3, "3"),     (4, "4"),
+            (5, "5"),      (6, "6"),     (7, "7"),     (8, "8"),
+            (9, "9"),      (10, "10"),   (11, "Jack"), (12, "Princess"),
+            (13, "Queen"), (14, "King"), (15, "Ace"),  (16, "Joker"),
+        ];
 
         for suit in suits {
-            for value in values {
-                result.push_back(Card::new_from_str(*suit, value));
+            for &(value, name) in values {
+                result.push_back(Card::new_from_str(*suit, name, value));
             }
         }
         return Deck::from_vec_deque(result);
