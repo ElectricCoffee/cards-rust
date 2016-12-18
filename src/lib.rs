@@ -81,8 +81,8 @@ impl Deck {
         res
     }
 
-    pub fn len(&self) {
-        self.cards.len();
+    pub fn len(&self) -> usize {
+        self.cards.len()
     }
 }
 
