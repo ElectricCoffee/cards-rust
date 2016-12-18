@@ -38,7 +38,7 @@ impl fmt::Display for Card {
 }
 
 impl Deck {
-    pub fn new_from_vec_deque(input: VecDeque<Card>) -> Deck {
+    pub fn from_vec_deque(input: VecDeque<Card>) -> Deck {
         Deck { cards: input }
     }
 
@@ -53,7 +53,7 @@ impl Deck {
                 result.push_back(Card::new_from_str(*suit, value));
             }
         }
-        return Deck::new_from_vec_deque(result);
+        return Deck::from_vec_deque(result);
     }
 
     pub fn make_fifth_dimension() -> Deck {
@@ -67,7 +67,7 @@ impl Deck {
                 result.push_back(Card::new_from_str(*suit, value));
             }
         }
-        return Deck::new_from_vec_deque(result);
+        return Deck::from_vec_deque(result);
     }
 
     // destructively shuffles the internal vector
