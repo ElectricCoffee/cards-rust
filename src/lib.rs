@@ -5,13 +5,13 @@ use rand::Rng;
 
 #[derive(Debug, Eq, PartialEq, PartialOrd, Clone)]
 pub struct Card {
-    suit:  String,
-    value: String,
+    pub suit:  String,
+    pub value: String,
 }
 
 #[derive(Debug, Eq, PartialEq, PartialOrd, Clone)]
 pub struct Deck {
-    cards: Vec<Card>
+    pub cards: Vec<Card>
 }
 
 impl Card {
