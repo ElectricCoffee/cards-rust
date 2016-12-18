@@ -84,6 +84,10 @@ impl Deck {
     pub fn len(&self) -> usize {
         self.cards.len()
     }
+
+    pub fn pop(&mut self) -> Option<Card> {
+        self.cards.pop()
+    }
 }
 
 impl Ord for Deck {
