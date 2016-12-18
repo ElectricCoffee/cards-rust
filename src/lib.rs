@@ -3,13 +3,13 @@ use std::str;
 use std::fmt;
 use rand::Rng;
 
-#[derive(Debug, Eq, PartialEq, PartialOrd)]
+#[derive(Debug, Eq, PartialEq, PartialOrd, Clone)]
 pub struct Card {
     suit:  String,
     value: String,
 }
 
-#[derive(Debug, Eq, PartialEq, PartialOrd)]
+#[derive(Debug, Eq, PartialEq, PartialOrd, Clone)]
 pub struct Deck {
     cards: Vec<Card>
 }
